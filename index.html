@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Game Mini</title>
+
+<style>
+
+body {
+
+  background: #101025;
+
+  color: white;
+
+  font-family: Arial;
+
+  text-align: center;
+
+  padding: 40px 15px;
+
+}
+
+.box {
+
+  background: #252545;
+
+  padding: 25px;
+
+  border-radius: 25px;
+
+  max-width: 400px;
+
+  margin: auto;
+
+}
+
+h1 { color: #a78bfa; }
+
+button {
+
+  background: #8b5cf6;
+
+  color: white;
+
+  border: 0;
+
+  padding: 20px 35px;
+
+  border-radius: 15px;
+
+  font-size: 22px;
+
+  margin-top: 15px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>🎮 GAME MINI</h1>
+
+<p>Bấm nhanh nhất có thể trong 10 giây!</p>
+
+<h2>⭐ Điểm: <span id="score">0</span></h2>
+
+<h2>⏱️ Thời gian: <span id="time">10</span></h2>
+
+<button id="play" onclick="tap()">BẮT ĐẦU</button>
+
+<h3 id="msg"></h3>
+
+</div>
+
+<script>
+
+let score = 0;
+
+let time = 10;
+
+let playing = false;
+
+function tap() {
+
+ if (!playing) {
+
+   score = 0;
+
+   time = 10;
+
+   playing = true;
+
+   document.getElementById("score").innerText = score;
+
+   document.getElementById("msg").innerText = "";
+
+   document.getElementById("play").innerText = "BẤM NGAY!";
+
+   let timer = setInterval(() => {
+
+     time--;
+
+     document.getElementById("time").innerText = time;
+
+     if (time <= 0) {
+
+       clearInterval(timer);
+
+       playing = false;
+
+       document.getElementById("play").innerText = "CHƠI LẠI";
+
+       document.getElementById("msg").innerText =
+
+       "🎉 Bạn đạt " + score + " điểm!";
+
+     }
+
+   }, 1000);
+
+   return;
+
+ }
+
+ score++;
+
+ document.getElementById("score").innerText = score;
+
+}
+
+</script>
+
+</body>
+
+</html>
